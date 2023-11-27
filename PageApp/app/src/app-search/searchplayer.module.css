@@ -1,0 +1,73 @@
+.searchbox {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 9rem 10rem;
+    padding-top: 1rem;
+    padding-left: 15rem;
+    padding-right: 15rem;
+}
+.searchtitle {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    text-align: center;
+}
+.searchoptions{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-rows: 4rem 4rem;
+}
+
+.searchoptionsinput{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.searchoptions input {
+    width: 100%;
+    border: 3px solid #001341;
+    height: 3rem;
+    border-radius: 5px 5px 5px 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+.searchoptionsbutton{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.searchoptions button {
+    margin-left: 40%;
+    margin-right: 40%;
+    width: 15rem;
+    height: 3rem;
+    border: 1px solid #001341;
+    background: #001341;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.displayplayers{
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.pesquisado {
+
+}
+
+.displayplayers div{
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.5rem;
+}
