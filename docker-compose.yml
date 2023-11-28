@@ -32,16 +32,11 @@ services:
     build:
       context: PageApp/app
     ports:
-      - "3000"
-    expose:
-      - "3000"
+      - "3000:3000"
     volumes:
       - ./PageApp:/PageApp
     networks:
       [ "rede" ]
-
-
-
 
 networks:
   rede:

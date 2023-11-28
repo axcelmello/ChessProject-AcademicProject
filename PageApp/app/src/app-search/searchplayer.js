@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from './searchplayer.module.css'
 
 function Searchplayer() {
-  const [searchTerm, setSearchTerm] = useState('SEARCH FOR A PLAYER');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleFetchButtonClick = () => {
     const valor_pesquisa = parseInt(searchTerm, 10)
@@ -36,6 +36,11 @@ function Searchplayer() {
           var parentElement = document.getElementById("displayplayers");
           parentElement.removeChild(elementToRemove);
       }
+      var elementToRemove = document.getElementById("pesquisadolista");
+      if (elementToRemove !== null){
+          var parentElement = document.getElementById("displayplayers");
+          parentElement.removeChild(elementToRemove);
+      }
 
       const lista = document.createElement('ul')
       lista.id = 'pesquisadolista'
@@ -46,17 +51,22 @@ function Searchplayer() {
 
           const litem = document.createElement('li')
           litem.classList.add('box');
+
+          const strong2 = document.createElement('strong');
+          strong2.textContent = ' ID: ';
+          litem.appendChild(strong2);
+          const value2 = document.createTextNode(players[i].idplayer + ' ');
+          litem.appendChild(value2);
+
           const strong = document.createElement('strong');
           strong.textContent = 'Name: ';
           litem.appendChild(strong);
           const value = document.createTextNode(players[i].name);
           litem.appendChild(value);
-          lista.appendChild(litem);
 
+          lista.appendChild(litem);
       }
       container.appendChild(lista)
-
-
 
   };
 
@@ -69,6 +79,13 @@ function Searchplayer() {
           var parentElement = document.getElementById("displayplayers");
           parentElement.removeChild(elementToRemove);
       }
+      var elementToRemove = document.getElementById("pesquisadolista");
+      if (elementToRemove !== null){
+          var parentElement = document.getElementById("displayplayers");
+          parentElement.removeChild(elementToRemove);
+      }
+
+
 
       const caixa = document.createElement('div')
       caixa.id = 'pesquisado'
@@ -91,7 +108,7 @@ function Searchplayer() {
     <div>
       <div className={styles.searchbox}>
           <div className={styles.searchtitle}>
-              <h1>SEEK AND DESTROY</h1>
+              <h1>Search for a Player</h1>
           </div>
           <div className={styles.searchoptions} >
               <div className={styles.searchoptionsinput}>
