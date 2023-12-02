@@ -1,0 +1,41 @@
+/* Basic styling for the form container */
+div {
+  max-width: 60%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Styling for form headings */
+h1, h2 {
+  text-align: center;
+}
+
+/* Styling for form labels */
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Styling for form input fields */
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Styling for form submit button */
+button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Hover effect for the submit button */
+button:hover {
+  background-color: #45a049;
+}

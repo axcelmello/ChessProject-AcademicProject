@@ -1,47 +1,72 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styles from './cadastroplayer.module.css'
 
-function CadastroPlayer () {
+function CadastroPlayer() {
 
-        const submitForm = () => {
+    const [formData, setFormData] = useState({
+        idplayer: '',
+        name: '',
+        username: '',
+        country: '',
+        idtitle: '',
+        idstatus: '',
+        rating: '',
+    });
 
-        }
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
 
-        return (
-            <div>
-                <h1>FORMULÁRIO CADASTRO NOVO PLAYER</h1>
+    const submitForm = (event) => {
+        event.preventDefault();
+        // Handle form submission with formData
+        console.log('Form submitted:', formData);
+        // Optionally reset form data
 
-                <h2>Create a Player</h2>
+        const data = [];
+        data.push(formData);
 
-                <form id="playerForm">
-                    <label htmlFor="idplayer">ID Player:</label>
-                    <input type="text" id="idplayer" name="idplayer" />
-
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name"/>
-
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" />
-
-                    <label htmlFor="country">Country:</label>
-                    <input type="text" id="country" name="country" />
-
-                    <label htmlFor="idtitle">ID Title:</label>
-                    <input type="text" id="idtitle" name="idtitle" />
-
-                    <label htmlFor="idstatus">ID Status:</label>
-                    <input type="text" id="idstatus" name="idstatus" />
-
-                    <label htmlFor="rating">Rating:</label>
-                    <input type="text" id="rating" name="rating" />
-
-                    <button type="button" onClick={submitForm()}>Cadastrar Jogador</button>
-                </form>
-
-                </div>
-        );
+        fetch('http://localhost:8000/newplayer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
-export default CadastroPlayer;
-/*
 
- */
+    return (
+
+
+        <div>
+
+            <h1>FORMULÁRIO CADASTRO NOVO PLAYER</h1>
+
+            <h2>Create a Player</h2>
+
+            <form id="playerForm" onSubmit={submitForm}>
+                {Object.entries(formData).map(([key, value]) => (
+                    <div key={key}>
+                        <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}:</label>
+                        <input type="text" id={key} name={key} value={value} onChange={handleChange}/>
+                    </div>
+                ))}
+                <button type="submit">Cadastrar Jogador</button>
+            </form>
+
+        </div>
+    );
+}
+
+export default CadastroPlayer;
